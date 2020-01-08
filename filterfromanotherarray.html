@@ -1,0 +1,42 @@
+<script>
+const responseData= [
+
+{ id: 1, name: 'a1', sub: { id: 6, name: 'a1 sub' } },
+    
+{ id: 2, name: 'a2', sub: null },
+    
+{ id: 3, name: 'a3', sub: { id: 8, name: 'a3 sub' } },
+    
+{ id: 4, name: 'a4', sub: null },
+    
+{ id: 5, name: 'a5', sub: { id: 10, name: 'a5 sub' } },
+
+];
+
+const newArray = [
+    
+{ id: 1, name: 'a1', sub: { id: 6, name: 'a1 sub' } },
+    
+{ id: 2, name: 'a2', sub: null },
+    
+{ id: 5, name: 'a5', sub: { id: 10, name: 'a5 sub' } },
+
+];
+
+
+
+const notIn2 = (array1, array2) => array1.filter(item1 => {
+    
+					const item1Str2 = JSON.stringify(item1.sub);
+    
+					return array2.find(item2 => item1Str2 === JSON.stringify(item2.sub))
+  
+}
+);
+console.log(notIn2(responseData, newArray));
+
+const found = responseData.some(r=> newArray.includes(r.sub))
+
+// c = responseData['sub'].concat(newArray['sub']);
+console.log([...responseData['sub'], ...newArray['sub']]);
+</script>
